@@ -1,7 +1,6 @@
 'use strict';
 
 var path = process.cwd();
-var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
 module.exports = function(app, passport) {
 
@@ -13,8 +12,6 @@ module.exports = function(app, passport) {
 			res.redirect('/');
 		}
 	}
-
-	var clickHandler = new ClickHandler();
 
 	app.route('/')
 		.get(isLoggedIn, function(req, res) {
@@ -36,8 +33,4 @@ module.exports = function(app, passport) {
 			failureRedirect: '/'
 		}));
 
-	app.route('/api/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick)
-		.delete(isLoggedIn, clickHandler.resetClicks);
 };

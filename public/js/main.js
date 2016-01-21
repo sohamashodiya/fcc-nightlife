@@ -17,7 +17,7 @@ $(document).ready(function() {
                 dataType: "json"
             }).done(function(data) {
                 //console.log("Logging in user", data);
-                if (!data.userLoggedIn) {
+                if (data.userLoggedIn === false) {
                     window.location.href = "/auth/github";
                 }
                 else {
