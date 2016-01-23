@@ -4,32 +4,73 @@
 
 <head>
 	<title>Nightlife Coordinator</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="/bower_components/Materialize/bin/materialize.css" rel="stylesheet" type="text/css">
 	<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="/bower_components/handlebars/handlebars.min.js"></script>
+	<script src="/bower_components/Materialize/bin/materialize.js"></script>
 	<script src="/public/js/main.js"></script>
 </head>
 
 
 <body>
-	<header id="header"></header>
-	
-	<form id="locationSearch">
-		<input id="location" placeholder="Where you at?" value="Fremont"></input>
-		<input type="submit" id="submit" value="GO">
-	</form>
-	<table id="table">
-	</table>
+	<div id="progress-bar" class="progress" style="margin:0px;">
+		<div class="indeterminate"></div>
+	</div>
+
+	<nav class="light-blue lighten-1" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Nightlife Coordinator</a>
+			<ul id="head" class="right">
+				<li id="header"></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br>
+			<br>
+			<h1 class="header center orange-text">Plans tonight?</h1>
+			<div class="row center">
+				<h5 class="header col s12 light">See which bars are hoppin' tonight and RSVP ahead of time!</h5>
+				<h5 class="header col s12 light">Remember: Take a cab and drink responsibly.</h5>
+			</div>
+			<div class="row center">
+				<form id="locationSearch">
+					<input id="location" placeholder="Where you at?"></input>
+					<input type="submit" value="GO" class="btn-large waves-effect waves-light orange" />
+				</form>
+			</div>
+			<br>
+			<br>
+		</div>
+	</div>
+
+	<center>
+		<div id="table"></div>
+	</center>
+
 	<script id="results-template" type="text/x-handlebars-template">
 		{{#each businesses}}
-		<tr>
-			<td><img src="{{image_url}}" style="width:100px;height:100px;"></td>
-			<td><h1>{{name}}</h1></td>
-			<td><div>{{snippet_text}}</div></td>
-			<td><img src="{{rating_img_url_small}}"></td>
-			<td><button class="goingBtn" id="{{id}}">Going?</button></td>
-			<td><div id="num-{{id}}">{{goingCount}}</div></td>
-		</tr>
+		<div id="row" class="row">
+			<div class="col s12 m6">
+				<div class="card">
+					<div class="card-content blue-text">
+						<img class="circle" src="{{image_url}}" style="width:100px;height:100px;">
+
+						<h3>{{name}}</h3></td>
+
+						<div>{{snippet_text}}</div>
+					</div>
+					<div class="card-action">
+						<img id="rating"src="{{rating_img_url}}">
+						<a class="goingBtn btn waves-effect waves-light orange">Going?</a>
+						<span id="num-{{id}}">{{goingCount}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		{{/each}}
 	</script>
 </body>

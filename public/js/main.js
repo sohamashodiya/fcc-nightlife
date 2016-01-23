@@ -4,13 +4,14 @@ $(document).ready(function() {
     init();
 
     function init() {
+        $("#progress-bar").hide();
         registerSubmit();
         getUser(searchPrevious);
         goingClicked();
     }
 
     function goingClicked() {
-        $("#table").on("click", ".goingBtn", function(e) {
+        $("#table").on("click", ".card-action .goingBtn", function(e) {
             var bus_id = $(e.target).attr("id");
             $.ajax({
                 url: "/api/going/" + bus_id,
@@ -47,11 +48,12 @@ $(document).ready(function() {
             .done(function(data) {
                 //console.log(data);    
                 if (data.status === "loggedIn") {
-                    $("#header").html("<div>Welcome " + data.github.username + "</div><a href='/logout'>Logout</a>");
+                    $("#header").html("<span>Welcome " + data.github.username + "</span>");
+                    $("#head").append("<li><a href='/logout'>Logout</a></li>");
                     whenLoggedIn();
                 }
                 else {
-                    $("#header").html("<a href='/auth/github'>Login</a>");
+                    $("#header").html("<a href='/auth/github'>Login with <img id='git-img' src='/public/img/github_32px.png'></a>");
                 }
             });
     }
@@ -61,11 +63,13 @@ $(document).ready(function() {
         var html = template({
             "businesses": data.businesses
         });
+        $("#progress-bar").hide();
         $("#table").empty().append(html);
     }
 
     function registerSubmit() {
         $("#locationSearch").on("submit", function(event) {
+            $("#progress-bar").show();
             event.preventDefault();
             event.stopPropagation();
             $.ajax({
