@@ -1,4 +1,4 @@
-#Nightlife Coordinator
+# Nightlife Coordinator
 
 This is a solution for https://www.freecodecamp.com/challenges/build-a-nightlife-coordination-app
 
@@ -10,18 +10,18 @@ User Story: As an authenticated user, I can remove myself from a bar if I no lon
 
 User Story: As an unauthenticated user, when I login I should not have to search again.
 
-##Screenshots:
+## Screenshots:
 
-###Homepage
+### Homepage
 <img src="/images/Nightlife1.PNG">
 
-###User types in his or her location. And now will see many bars near that location.
+### User types in his or her location. And now will see many bars near that location.
 <img src="/images/Nightlife2.PNG">
 
-###If a user wants to go to a certain bar, he or she will click "Going". If others are going to the same bar, the user will be able to see how many are.
+### If a user wants to go to a certain bar, he or she will click "Going". If others are going to the same bar, the user will be able to see how many are.
 <img src="/images/Nightlife3.PNG">
 
-##Technologies Used:
+## Technologies Used:
 - Node.js
 - Express
 - MongoDB
